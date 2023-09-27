@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="poetrydb.sqlite3" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <!--强行给资源命名，避免获取嵌入式资源时出现命名错误的问题-->
+	  <EmbeddedResource Include="poetrydb.sqlite3">
+		  <LogicalName>poetrydb.sqlite3</LogicalName>
+	  </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BootstrapBlazor" Version="7.10.7" />
+    <PackageReference Include="BootstrapBlazor.FontAwesome" Version="7.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.6" />
+    <PackageReference Include="Sve.Blazor.InfiniteScroll" Version="1.0.0-alpha" />
+  </ItemGroup>
+
+</Project>
