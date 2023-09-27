@@ -2,6 +2,9 @@
 @using Sve.Blazor.InfiniteScroll.Components
 
 @inject IPoetryStorage _poetryStorage
+@inject INavigationServices _navigationServices
+
+<Button OnClick='() => _navigationServices.NavigateTo("/detail/1")'>Go</Button>
 
 <InfiniteScroll ObserverTargetId="observerTarget"
                 ObservableTargetReached="_ => LoadMoreAsync()">
@@ -21,5 +24,7 @@
         </div>
         <div class="shim-xl"></div>
     }
-    <div id="observerTarget"></div>
+    <div id="observerTarget">
+        @_status
+    </div>
 </InfiniteScroll>

@@ -28,9 +28,18 @@ public partial class Result
 
     private async Task LoadMoreAsync()  // 无限滚动
     {
+        _status = Loading;
         // 条件，跳过已经读取的数，读取PageSize条数据
         var poetries = 
             await _poetryStorage.GetPoetriesAsync(_where, _poetries.Count, PageSize);
+        await Task.Delay(1000); // 模拟1s的网络延迟
+        _status = string.Empty;
         _poetries.AddRange(poetries);
+
+        if (poetries.Count() < PageSize)
+            _status = NoMoreResult;
+
+        if (!poetries.Any() && _poetries.Count() == 0)
+            _status = NoResult;
     }
 }
