@@ -15,6 +15,7 @@ builder.Services.AddScoped<IPoetryStorage, PoetryStorage>();
 builder.Services.AddScoped<IPreferenceStorage, PreferenceStorage>();
 builder.Services.AddScoped<INavigationServices, NavigationServices>();
 builder.Services.AddScoped<IAlertService, AlertService>();
+builder.Services.AddScoped<ITodayPoetryService, JinrishiciService>();
 
 var app = builder.Build();
 

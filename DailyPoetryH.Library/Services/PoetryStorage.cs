@@ -5,15 +5,14 @@ using SQLite;
 namespace DailyPoetryH.Library.Services;
 public class PoetryStorage : IPoetryStorage
 {
-    public static readonly string DbName = "poetrydb.sqlite3";
+    public const int NumberPoetry = 30;
+    public const string DbName = "poetrydb.sqlite3";
     public static readonly string PoetryDbPath =
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder
-            .LocalApplicationData), DbName);
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DbName);
     
     // 数据库连接
     private SQLiteAsyncConnection _connection;
-    private SQLiteAsyncConnection Connection => 
-        _connection ??= new SQLiteAsyncConnection(PoetryDbPath);
+    private SQLiteAsyncConnection Connection => _connection ??= new SQLiteAsyncConnection(PoetryDbPath);
 
     private readonly IPreferenceStorage _preferenceStorage;
     public PoetryStorage(IPreferenceStorage preferenceStorage)

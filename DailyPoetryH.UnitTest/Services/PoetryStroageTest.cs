@@ -79,7 +79,7 @@ public class PoetryStroageTest : IDisposable
     {
         var poetryStorage = await PoetryStorageHelper.GetInitializedPoetryStorage();
         var poetry = await poetryStorage.GetPoetryAsync(10001);
-        Assert.Equal("临江仙·夜归临皋", poetry.Name);
+        Assert.Equal("临江仙 · 夜归临皋", poetry.Name);
         await poetryStorage.CloseAsync();
     }
 

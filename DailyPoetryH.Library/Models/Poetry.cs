@@ -4,7 +4,7 @@
 [SQLite.Table("works")]
 public class Poetry
 {
-    // 数据库有的用列明做映射
+    // 数据库有的用列名做映射
     [SQLite.Column("id")]
     public int Id
     {
