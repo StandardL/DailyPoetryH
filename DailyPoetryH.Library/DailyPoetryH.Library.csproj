@@ -6,14 +6,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;039</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;039</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="poetrydb.sqlite3" />
+    <None Remove="todayImage.bin" />
   </ItemGroup>
 
   <ItemGroup>
 	  <!--强行给资源命名，避免获取嵌入式资源时出现命名错误的问题-->
 	  <EmbeddedResource Include="poetrydb.sqlite3">
 		  <LogicalName>poetrydb.sqlite3</LogicalName>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="todayImage.bin">
+		  <LogicalName>todayImage.bin</LogicalName>
 	  </EmbeddedResource>
   </ItemGroup>
 

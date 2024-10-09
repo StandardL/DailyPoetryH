@@ -16,6 +16,8 @@ builder.Services.AddScoped<IPreferenceStorage, PreferenceStorage>();
 builder.Services.AddScoped<INavigationServices, NavigationServices>();
 builder.Services.AddScoped<IAlertService, AlertService>();
 builder.Services.AddScoped<ITodayPoetryService, JinrishiciService>();
+builder.Services.AddScoped<ITodayImageService, BingImageService>();
+builder.Services.AddScoped<ITodayImageStorage, TodayImageStorage>();
 
 var app = builder.Build();
 

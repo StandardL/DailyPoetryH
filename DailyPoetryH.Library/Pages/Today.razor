@@ -1,4 +1,45 @@
 ﻿@page "/today"
+@using Microsoft.JSInterop
 @inject ITodayPoetryService _todayPoetryService
+@inject ITodayImageService _todayImageService
+@inject IJSRuntime _jsRuntime
 
-@_todayPoery.Content
+<div style="background-image: linear-gradient(90deg, rgb(5, 39, 103) 0%, #3a0647 70%); padding: 1.5em; color: white">
+    @if(_isLoading)
+    {
+        <h1><Spinner></Spinner></h1>
+    }
+    else
+    {
+        <h1>@_todayPoery.Snippet</h1>
+        <div class="shim-xl"/>
+        <h3>@_todayPoery.Dynasty · @_todayPoery.Author</h3>
+        <h3>《@_todayPoery.Name》</h3>
+
+        <div style="display: @(_todayPoery.Source == TodayPoetrySources.Jinrishici ? "block" : "hidden")">
+            <div class="shim-xl" />
+            推荐自
+            <a href="https://www.jinrishici.com/" target="_blank">今日诗词</a>
+        </div>
+
+        <div class="shim-xl"/>
+        <Button OnClick="() => _isShowDetail = true">查看全文</Button>
+
+        @if (_isShowDetail)
+        {
+            <div class="shim-2xl"></div>
+            <h3>@(new MarkupString(_todayPoery.Content.Replace(Environment.NewLine, "<br />")))</h3>
+        }
+    }
+</div>
+<img id="image" class="w-100" />
+<div class="shim-xs"></div>
+<p>
+    <a href="@_todayImage.CopyrightLink" target="_blank"></a>
+</p>
+<p>
+    Daily Poetry Hybrid
+    <a href="https://github.com/StandardL/DailyPoetryH" target="_blank">
+        https://github.com/StandardL/DailyPoetryH
+    </a>
+</p>
